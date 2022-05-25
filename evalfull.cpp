@@ -20,14 +20,24 @@ TokenType identify(char *t);
 // is the number of tokens in the array (3 in the sample)
 
 bool balanced(char *expression[], int numTokens) {
+    string temp = *expression;
+    int len = temp.length();
+    
+    stack<char*> s;
+    //cout << "numTokens: " << numTokens << endl;
+    //cout << "temp: " << *expression[1] << endl;
 
-    stack<char *> s;  // USE s TO SOLVE THE PROBLEM - it is an STL
-                      // (Standard Template Library) structure with
-                      // all of the same operations as the stack from
-                      // Step 2 of this lab, but it won't get full
-                      // and it can store any type - <char *> here
+    for(int i = 0; i < numTokens; i++){
+        if(*expression[i] == '('){
+            //cout << expression[i]<< endl;
+            s.push(expression[i]);
+        }
+        if(*expression[i] == ')'){
+            s.pop();
+        }
+    }
 
-    return false; // REPLACE THIS return WITH ACTUAL IMPLEMENTATION
+    return s.empty(); // REPLACE THIS return WITH ACTUAL IMPLEMENTATION
 }
 
 // DO NOT CHANGE ANYTHING BELOW - BUT DO READ IT
